@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Interactivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="background-animation">
+        <div class="orb" style="background: linear-gradient(45deg, #f06, #60f); width: 300px; height: 300px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="orb" style="background: linear-gradient(45deg, #09f, #0ff); width: 200px; height: 200px; top: 60%; left: 70%; animation-delay: 2s;"></div>
+        <div class="orb" style="background: linear-gradient(45deg, #9f6, rgb(57, 176, 108)); width: 250px; height: 250px; top: 70%; left: 20%; animation-delay: 4s;"></div>
+        <div class="orb" style="background: linear-gradient(45deg, #f09, #90f); width: 180px; height: 180px; top: 20%; left: 80%; animation-delay: 1s;"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Bienvenida</h1>
+            <p>Escoge una de las tres opciones</p>
+        </header>
+
+        <div class="button-container">
+            <!-- Botón 1 -->
+            <a href="corazon.html">
+            <div class="menu-button" id="button1">
+                <div class="emoji">❤️</div>
+                <h2>Opción 1</h2>
+            </div>
+
+            <!-- Botón 2 -->
+            <a href="rosa.html">
+            <div class="menu-button" id="button2">
+                <div class="emoji">🌹</div>
+                <h2>Opción 2</h2>
+            </div>
+
+            <!-- Botón 3 -->
+            <a href="ramo_flores.html">
+            <div class="menu-button" id="button3">
+                <div class="emoji">💐</div>
+                <h2>Opción 3</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gato animado -->
+    <div class="cat">
+        <div class="cat-container">
+            <img src="https://media.tenor.com/4yEuW6bbRo0AAAAi/gato.gif" alt="Gato animado" class="cat-image">
+            <div class="speech-bubble">¡Miau!</div>
+        </div>
+    </div>
+    <script src="script.js"></script> <!-- Agregar referencia a script.js -->
+
+</body>
+</html>

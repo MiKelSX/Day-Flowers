@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosa para Nahomi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #4a235a);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .rose-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(10px) rotate(-5deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        .message {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 2rem;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 123, 179, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff7eb3;
+            z-index: 1;
+            opacity: 0;
+            animation: floatHeart 12s infinite linear;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .hearts-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .name {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-bg" id="hearts-container">
+        <!-- Los corazones se generarán dinámicamente con JavaScript -->
+    </div>
+
+    <div class="container">
+        <div class="rose-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 150" width="100%" height="100%">
+                <!-- Tallo -->
+                <path d="M50 60 L 50 140" stroke="#2ecc71" stroke-width="4" />
+                
+                <!-- Hojas -->
+                <path d="M50 90 C 40 85, 30 90, 25 85 C 20 80, 25 70, 35 75 Z" fill="#27ae60" />
+                <path d="M50 110 C 60 105, 70 110, 75 105 C 80 100, 75 90, 65 95 Z" fill="#27ae60" />
+                
+                <!-- Rosa - Capas de pétalos -->
+                <g class="rose-bloom">
+                    <!-- Capa exterior -->
+                    <path d="M30 40 C 20 30, 20 15, 30 10 C 40 5, 45 15, 50 10 C 55 15, 60 5, 70 10 C 80 15, 80 30, 70 40 C 80 50, 80 60, 70 65 C 60 70, 55 60, 50 65 C 45 60, 40 70, 30 65 C 20 60, 20 50, 30 40" fill="#e74c3c" />
+                    
+                    <!-- Capa media -->
+                    <path d="M35 40 C 28 33, 28 23, 35 18 C 42 13, 45 23, 50 18 C 55 23, 58 13, 65 18 C 72 23, 72 33, 65 40 C 72 47, 72 55, 65 60 C 58 65, 55 55, 50 60 C 45 55, 42 65, 35 60 C 28 55, 28 47, 35 40" fill="#c0392b" />
+                    
+                    <!-- Centro -->
+                    <circle cx="50" cy="40" r="10" fill="#a93226" />
+                </g>
+            </svg>
+        </div>
+        <h1 class="message">Te Amo mucho mi</h1>
+        <p class="name">Nahomi</p>
+    </div>
+
+    <script>
+        // Crear corazones flotantes aleatoriamente
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts-container');
+            const numHearts = 100; // Cantidad de corazones
+            
+            // Varios tipos de corazones
+            const heartTypes = ['❤️', '💕', '💖', '💗', '💓', '💘'];
+            
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                
+                // Posición aleatoria
+                const left = Math.random() * 100;
+                const delay = Math.random() * 12;
+                const duration = 8 + Math.random() * 8; // Entre 8 y 16 segundos
+                const size = 0.7 + Math.random() * 1.7; // Tamaño entre 0.5 y 1.5
+                
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.fontSize = `${size}rem`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Animar la rosa
+        function animateRose() {
+            const roseBloom = document.querySelector('.rose-bloom');
+            
+            // Pequeña animación adicional para la rosa
+            setInterval(() => {
+                // Cambia ligeramente el color de la rosa para simular un efecto de brillo
+                const hue = 0 + Math.sin(Date.now() / 1000) * 10;
+                const saturation = 80 + Math.sin(Date.now() / 1500) * 10;
+                const baseColor = `hsl(${hue}, ${saturation}%, 55%)`;
+                const darkerColor = `hsl(${hue}, ${saturation}%, 45%)`;
+                const darkestColor = `hsl(${hue}, ${saturation}%, 35%)`;
+                
+                const paths = roseBloom.querySelectorAll('path');
+                if (paths.length >= 2) {
+                    paths[0].setAttribute('fill', baseColor);
+                    paths[1].setAttribute('fill', darkerColor);
+                }
+                const circle = roseBloom.querySelector('circle');
+                if (circle) {
+                    circle.setAttribute('fill', darkestColor);
+                }
+            }, 100);
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+            animateRose();
+        });
+    </script>
+</body>
+</html>

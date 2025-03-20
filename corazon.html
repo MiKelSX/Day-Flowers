@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón para Nahomi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #0f0f1e;
+            overflow: hidden;
+            position: relative;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) scale(0);
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .message-container {
+            max-width: 800px;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff3366, #ff9966);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #eee;
+        }
+
+        .highlight {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6699;
+            margin-top: 2rem;
+            display: block;
+        }
+
+        .back-btn {
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, #ff3366, #ff9966);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .message-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <h1>Para Nahomi</h1>
+        <p>La distancia entre nosotros solo es física, porque mis pensamientos están siempre contigo. Cada kilómetro que nos separa solo fortalece lo que siento, porque un amor verdadero no conoce límites ni fronteras.</p>
+        
+        <p>Cuando mires al cielo, recuerda que estamos bajo las mismas estrellas. Cuando sientas el viento, piensa que quizás ha tocado mi rostro antes de llegar a ti.</p>
+        
+        <p>No importa cuántos días pasen sin vernos, cada uno es un paso más cerca del momento en que podré abrazarte nuevamente. Hasta entonces, mi corazón guarda cada recuerdo tuyo como el tesoro más valioso.</p>
+        
+        <p class="highlight">Espero con ansias el día en que la distancia sea solo un recuerdo.</p>
+        
+        <a href="index.html" class="back-btn">Volver al Menú</a>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            // Tamaño aleatorio
+            const size = Math.random() * 30 + 10;
+            heart.style.fontSize = `${size}px`;
+            
+            // Posición horizontal aleatoria
+            const left = Math.random() * 100;
+            heart.style.left = `${left}%`;
+            
+            // Velocidad aleatoria
+            const duration = Math.random() * 5 + 3;
+            heart.style.animationDuration = `${duration}s`;
+            
+            // Color aleatorio
+            const hue = Math.random() * 60 + 330; // Tonos rojizos-rosados
+            const color = `hsl(${hue}, 100%, 65%)`;
+            heart.style.color = color;
+            
+            // Añadir contenido y agregar al body
+            heart.innerHTML = '❤';
+            document.body.appendChild(heart);
+            
+            // Eliminar corazón después de completar la animación
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+        
+        // Crear corazones periódicamente
+        setInterval(createHeart, 300);
+        
+        // Crear más corazones al principio
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createHeart, i * 100);
+        }
+    </script>
+</body>
+</html>
