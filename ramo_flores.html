@@ -23,6 +23,16 @@
             100% { background-position: 0% 50%; }
         }
 
+        h1 {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            text-align: center;
+            font-size: 2rem;
+        }
+
         .flower-bouquet {
             position: relative;
             width: 400px; /* Aumenté el tamaño para acomodar más flores */
@@ -159,11 +169,14 @@
 
         #mydialog button {
             margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
 <body>
-
+    <h1>Flores</h1>
     <div class="flower-bouquet">
         <!-- Flores 1 a 22 -->
         <!-- Flor 1 -->
@@ -454,7 +467,6 @@
             </div>
         </div>
     </div>
-
     <div class="controls">
         <button onclick="showMessage()">Mostrar Mensaje</button>
         <button onclick="changeColor('yellow')">Amarillo</button>
@@ -463,7 +475,7 @@
     </div>
 
     <div id="mydialog">
-        <p>¡Hola! Este es un mensaje bonito y moderno.</p>
+        <p>Para mi Hermosa, Linda, Bella y Encantadora Nahomi ❤️💕</p>
         <button onclick="closeDialog()">Cerrar</button>
     </div>
 
